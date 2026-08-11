@@ -173,33 +173,39 @@
             </div>
 
             <!-- Otro -->
-            <div class="option-card full-width">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="hamb_otro_check" class="toggle-inputs" data-target="hamb_otro_fields">
-                <span class="checkbox-custom"></span>
-                <span class="option-title">Otro Tipo de Pan de Hamburguesa</span>
-              </label>
-              <div id="hamb_otro_fields" class="sub-fields disabled">
-                <div class="input-inline">
-                  <label>Nombre Variedad:</label>
-                  <input type="text" name="hamb_otro_nombre" placeholder="ej: Integral / XL">
-                </div>
-                <div class="input-inline">
-                  <label>Paquetes de:</label>
-                  <div class="input-with-suffix">
-                    <input type="number" name="hamb_otro_uni" placeholder="ej: 6" min="1">
-                    <span class="suffix">uni</span>
+            
+            <div class="dynamic-container full-width" id="dynamic-hamb" data-count="1">
+              <div class="option-card full-width dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="hamb_otro_check_0" class="toggle-inputs" data-target="hamb_otro_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Otro Tipo de Pan de Hamburguesa</span>
+                </label>
+                <div id="hamb_otro_fields_0" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Nombre Variedad:</label>
+                    <input type="text" name="hamb_otro_nombre_0" placeholder="ej: Integral / XL">
                   </div>
-                </div>
-                <div class="input-inline">
-                  <label>Precio venta:</label>
-                  <div class="input-with-prefix">
-                    <span class="prefix">$</span>
-                    <input type="number" name="hamb_otro_precio" placeholder="0.00" step="0.01">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix">
+                      <input type="number" name="hamb_otro_uni_0" placeholder="ej: 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio venta:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="hamb_otro_precio_0" placeholder="0.00" step="0.01">
+                    </div>
                   </div>
                 </div>
               </div>
+              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('hamb', 'Otro Tipo de Pan de Hamburguesa')">+ Agregar otra variedad</button>
             </div>
+
+                
 
           </div>
         </div>
@@ -260,33 +266,39 @@
             </div>
 
             <!-- Otro Pancho -->
-            <div class="option-card full-width">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="pancho_otro_check" class="toggle-inputs" data-target="pancho_otro_fields">
-                <span class="checkbox-custom"></span>
-                <span class="option-title">Otro Pan de Pancho</span>
-              </label>
-              <div id="pancho_otro_fields" class="sub-fields disabled">
-                <div class="input-inline">
-                  <label>Nombre Variedad:</label>
-                  <input type="text" name="pancho_otro_nombre" placeholder="ej: Pancho gigante XL">
-                </div>
-                <div class="input-inline">
-                  <label>Paquetes de:</label>
-                  <div class="input-with-suffix">
-                    <input type="number" name="pancho_otro_uni" placeholder="ej: 6" min="1">
-                    <span class="suffix">uni</span>
+            
+            <div class="dynamic-container full-width" id="dynamic-pancho" data-count="1">
+              <div class="option-card full-width dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="pancho_otro_check_0" class="toggle-inputs" data-target="pancho_otro_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Otro Pan de Pancho</span>
+                </label>
+                <div id="pancho_otro_fields_0" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Nombre Variedad:</label>
+                    <input type="text" name="pancho_otro_nombre_0" placeholder="ej: Pancho gigante XL">
                   </div>
-                </div>
-                <div class="input-inline">
-                  <label>Precio venta:</label>
-                  <div class="input-with-prefix">
-                    <span class="prefix">$</span>
-                    <input type="number" name="pancho_otro_precio" placeholder="0.00" step="0.01">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix">
+                      <input type="number" name="pancho_otro_uni_0" placeholder="ej: 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio venta:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="pancho_otro_precio_0" placeholder="0.00" step="0.01">
+                    </div>
                   </div>
                 </div>
               </div>
+              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('pancho', 'Otro Pan de Pancho')">+ Agregar otra variedad</button>
             </div>
+
+                
 
           </div>
         </div>
@@ -300,6 +312,15 @@
               <span class="suffix">días</span>
             </div>
           </div>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
         </div>
       </section>
 
@@ -401,8 +422,20 @@
                   </div>
                 </td>
               </tr>
+            
+            </tbody>
+            <tbody id="dynamic-insumo" data-count="0">
             </tbody>
           </table>
+          <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('insumo', 'Insumo Adicional', false, true)">+ Agregar otro insumo</button>
+        </div>
+        <div class="aclaracion-box mt-20">
+          <label class="custom-checkbox-label">
+            <input type="checkbox" class="toggle-aclaracion">
+            <span class="checkbox-custom"></span>
+            <span class="text-sm">💬 Agregar aclaración / comentario general sobre insumos</span>
+          </label>
+          <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
         </div>
 
         <div class="question-group mt-20">
@@ -483,6 +516,15 @@
               </div>
             </div>
           </div>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
         </div>
       </section>
 
@@ -523,6 +565,15 @@
               <span class="suffix">bandejas / carro</span>
             </div>
           </div>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
         </div>
       </section>
 
@@ -599,6 +650,15 @@
               <span class="radio-label-text">No, se tira a la basura (pérdida total)</span>
             </label>
           </div>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
         </div>
       </section>
 
@@ -638,16 +698,21 @@
               <span>Empleados / Jornales diarios</span>
             </label>
 
-            <div class="option-card full-width">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="gasto_otros_check" class="toggle-inputs" data-target="gasto_otros_fields">
-                <span class="checkbox-custom"></span>
-                <span>Otros gastos adicionales</span>
-              </label>
-              <div id="gasto_otros_fields" class="sub-fields disabled">
-                <input type="text" name="gasto_otros_detalle" placeholder="Especifique cuáles (ej: mantenimiento de máquinas, bolsas extra)">
+            
+            <div class="dynamic-container full-width" id="dynamic-gasto" data-count="1">
+              <div class="option-card full-width dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="gasto_otros_check_0" class="toggle-inputs" data-target="gasto_otros_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span>Otros gastos adicionales</span>
+                </label>
+                <div id="gasto_otros_fields_0" class="sub-fields disabled">
+                  <input type="text" name="gasto_otros_detalle_0" placeholder="Especifique cuáles (ej: mantenimiento de máquinas)">
+                </div>
               </div>
+              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('gasto', 'Otros gastos adicionales', true)">+ Agregar otro gasto</button>
             </div>
+
           </div>
         </div>
 
@@ -665,6 +730,15 @@
               <span class="radio-custom"></span>
               <span class="radio-label-text">Solo contamos el dinero ingresado en caja/banco</span>
             </label>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
           </div>
 
           <div class="mt-20">
@@ -758,16 +832,25 @@
           <p class="hint">¿Hay buena señal de Wi-Fi en la zona de amasado/hornos donde se usará el dispositivo?</p>
           <div class="radio-options vertical">
             <label class="custom-radio-card">
-              <input type="radio" name="wifi_planta" value="Sí, hay Wi-Fi en toda la planta">
+              <input type="radio" name="wifi_planta" value="Sí">
               <span class="radio-custom"></span>
-              <span class="radio-label-text">📶 Sí, hay Wi-Fi en toda la planta</span>
+              <span class="radio-label-text">Sí</span>
             </label>
             <label class="custom-radio-card">
-              <input type="radio" name="wifi_planta" value="No, la señal va y viene (la app operará la mayor parte del tiempo sin conexión)">
+              <input type="radio" name="wifi_planta" value="No">
               <span class="radio-custom"></span>
-              <span class="radio-label-text">⚠️ No, la señal va y viene (operación offline requerida)</span>
+              <span class="radio-label-text">No</span>
             </label>
           </div>
+          <div class="aclaracion-box mt-20">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="toggle-aclaracion">
+              <span class="checkbox-custom"></span>
+              <span class="text-sm">💬 Agregar aclaración / comentario</span>
+            </label>
+            <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+          </div>
+
         </div>
       </section>
 
