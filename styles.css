@@ -660,12 +660,30 @@ input[type="text"]:focus {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+
+  .main-layout {
+    padding: 0 0.75rem;
+    width: 100%;
+  }
+
   .grid-2-col, .options-grid {
     grid-template-columns: 1fr;
   }
   
   .card-section {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
+    width: 100%;
+    min-width: 0;
+    word-break: break-word; /* Evitar que textos largos estiren la caja */
+  }
+
+  .form-container {
+    width: 100%;
+    min-width: 0;
   }
 
   .input-inline {
