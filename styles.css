@@ -391,12 +391,23 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   padding: 0.5rem 0.75rem;
   outline: none;
-  width: 100px;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
   font-family: inherit;
 }
 
+.input-with-suffix.compact {
+  width: 220px; /* Aproximadamente el valor deseado, asegurando espacio */
+}
+
 .input-with-suffix.compact input {
-  width: 80px;
+  max-width: none;
+}
+
+.input-with-suffix.compact .suffix {
+  width: 120px; /* Forzar que todos los sufijos midan igual */
+  justify-content: center;
 }
 
 .suffix, .prefix {
@@ -406,6 +417,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
   font-weight: 600;
   border-left: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .prefix {
@@ -672,3 +687,62 @@ input[type="text"]:focus {
     margin-left: 0;
   }
 }
+
+
+/* Nuevos Estilos: Aclaraciones y Campos Din�micos */
+.aclaracion-box {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.aclaracion-text {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 10px;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: var(--transition);
+}
+
+.aclaracion-text:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+}
+
+.text-sm {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dynamic-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-add-more {
+  background: transparent;
+  border: 2px dashed var(--border-color);
+  color: var(--text-muted);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-add-more:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: #fff0ec;
+}
+
+
+.input-with-suffix, .input-with-prefix { flex: 1; }
