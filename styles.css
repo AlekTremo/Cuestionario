@@ -662,12 +662,26 @@ input[type="text"]:focus {
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;
-    width: 100vw;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .main-layout, .form-container, .card-section, .action-footer, .header-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
   }
 
   .main-layout {
-    padding: 0 0.75rem;
-    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .btn {
+    white-space: normal;
+    height: auto;
+    line-height: 1.2;
+    padding: 1rem;
   }
 
   .grid-2-col, .options-grid {
