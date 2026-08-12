@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 1. TOGGLES & ACLARACIONES ---
   function bindDynamicEvents(container = document) {
-    // Toggles de inputs (disabled/enabled)
+    // Toggles de checkboxes
     container.querySelectorAll(".toggle-inputs").forEach(input => {
-      // Evitar bindear multiples veces
       if(input.dataset.bound) return;
       input.dataset.bound = true;
 
@@ -34,13 +33,24 @@ document.addEventListener("DOMContentLoaded", () => {
             targetDiv.style.display = "none";
             targetDiv.querySelectorAll("input").forEach(i => i.value = "");
           }
-        } else if (e.target.type === "radio") {
-          const name = e.target.name;
-          const allRadios = document.querySelectorAll(`input[name="${name}"]`);
-          allRadios.forEach(radio => {
-            if(radio.dataset.target) {
-              const div = document.getElementById(radio.dataset.target);
-              if (radio.checked) {
+        }
+        updateProgress();
+      });
+    });
+
+    // Toggles de radios (asegura que al elegir cualquier otro radio, el sub-field de la opción anterior se oculte)
+    container.querySelectorAll("input[type='radio']").forEach(radio => {
+      if(radio.dataset.radioBound) return;
+      radio.dataset.radioBound = true;
+
+      radio.addEventListener("change", (e) => {
+        const name = e.target.name;
+        const allRadiosInGroup = document.querySelectorAll(`input[name="${name}"]`);
+        allRadiosInGroup.forEach(r => {
+          if(r.dataset.target) {
+            const div = document.getElementById(r.dataset.target);
+            if(div) {
+              if (r.checked) {
                 div.classList.remove("disabled");
                 div.style.display = "flex";
               } else {
@@ -49,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 div.querySelectorAll("input").forEach(i => i.value = "");
               }
             }
-          });
-        }
+          }
+        });
         updateProgress();
       });
     });
@@ -81,12 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const newCount = count + 1;
     container.dataset.count = newCount;
 
-    const btn = container.querySelector('.btn-add-more');
-    const newItem = document.createElement('div');
-    newItem.className = "option-card full-width dynamic-item";
-    
-    
-    let innerHTML = '';
     if(isTable) {
       const tr = document.createElement('tr');
       tr.className = "dynamic-item";
@@ -101,8 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </td>
       `;
       container.appendChild(tr);
-      return; // No usamos insertBefore porque es tbody y boton esta fuera
+      return;
     }
+
+    const btn = container.querySelector('.btn-add-more');
+    const newItem = document.createElement('div');
+    newItem.className = "option-card full-width dynamic-item";
+    
+    let innerHTML = '';
     if(!isGasto) {
       innerHTML = `
         <label class="custom-checkbox-label">
@@ -123,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
           <div class="input-inline">
-            <label>Precio venta:</label>
+            <label>Precio:</label>
             <div class="input-with-prefix">
               <span class="prefix">$</span>
               <input type="number" name="${type}_otro_precio_${count}" placeholder="0.00" step="0.01">
@@ -162,9 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Remover active de todos
         navItems.forEach(item => item.classList.remove("active"));
-        // Buscar el link que corresponde a esta seccion
         const id = entry.target.getAttribute("id");
         const activeLink = document.querySelector(`.nav-item[href="#${id}"]`);
         if(activeLink) activeLink.classList.add("active");
@@ -220,10 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Helper para buscar aclaraciones en el HTML por contexto 
-  // Usa el texto de la pregunta para ubicar el group y extraer el textarea
   const getAclaracion = (searchString) => {
-    // Busca el titulo o label cercano
     const headers = document.querySelectorAll('h3, .hint');
     let targetGroup = null;
     headers.forEach(h => {
@@ -231,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
         targetGroup = h.closest('.question-group');
       }
     });
-    // Fallback: buscar label
     if(!targetGroup) {
       const labels = document.querySelectorAll('label');
       labels.forEach(l => {
@@ -242,14 +246,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if(targetGroup) {
       const txt = targetGroup.querySelector('.aclaracion-text');
       if(txt && txt.value.trim() !== "") {
-        return `\n> *Aclaración del cliente:* ${txt.value.trim()}\n`;
+        return `\nAclaración: ${txt.value.trim()}\n`;
       }
     }
     return "";
   };
 
-  // Generar listas dinamicas
-  
+  const getDynamicHamb = () => {
+    let str = "";
+    const container = document.getElementById('dynamic-hamb');
+    if(!container) return "";
+    const count = parseInt(container.dataset.count);
+    for(let i=0; i<count; i++) {
+      if(form.elements[`hamb_otro_check_${i}`]) {
+        str += `\n${c(`hamb_otro_check_${i}`)} Otro: ${v(`hamb_otro_nombre_${i}`)}. Paquetes de: ${v(`hamb_otro_uni_${i}`)} uni. Precio: $${v(`hamb_otro_precio_${i}`)}`;
+      }
+    }
+    return str;
+  };
+
+  const getDynamicPancho = () => {
+    let str = "";
+    const container = document.getElementById('dynamic-pancho');
+    if(!container) return "";
+    const count = parseInt(container.dataset.count);
+    for(let i=0; i<count; i++) {
+      if(form.elements[`pancho_otro_check_${i}`]) {
+        str += `\n${c(`pancho_otro_check_${i}`)} Otro: ${v(`pancho_otro_nombre_${i}`)}. Paquetes de: ${v(`pancho_otro_uni_${i}`)} uni. Precio: $${v(`pancho_otro_precio_${i}`)}`;
+      }
+    }
+    return str;
+  };
+
   const getDynamicInsumo = () => {
     let str = "";
     const container = document.getElementById('dynamic-insumo');
@@ -257,204 +285,223 @@ document.addEventListener("DOMContentLoaded", () => {
     const count = parseInt(container.dataset.count);
     for(let i=0; i<count; i++) {
       if(form.elements[`insumo_nombre_${i}`]) {
-        str += `- ${v(`insumo_nombre_${i}`)}: ${v(`insumo_pres_${i}`)} (Costo: ${v(`insumo_costo_${i}`)})\n`;
+        str += `\n${v(`insumo_nombre_${i}`)}: ${v(`insumo_pres_${i}`)} (Costo: $${v(`insumo_costo_${i}`)})`;
       }
     }
-    return str.trimEnd();
-  };
-
-  const getDynamicHamb = () => {
-    let str = "";
-    const container = document.getElementById('dynamic-hamb');
-    const count = parseInt(container.dataset.count);
-    for(let i=0; i<count; i++) {
-      if(form.elements[`hamb_otro_check_${i}`]) {
-        str += `- ${c(`hamb_otro_check_${i}`)} Otro: ${v(`hamb_otro_nombre_${i}`)}. Paquetes de: ${v(`hamb_otro_uni_${i}`)} uni. Precio venta: $${v(`hamb_otro_precio_${i}`)} por paquete.\n`;
-      }
-    }
-    return str.trimEnd();
-  };
-
-  const getDynamicPancho = () => {
-    let str = "";
-    const container = document.getElementById('dynamic-pancho');
-    const count = parseInt(container.dataset.count);
-    for(let i=0; i<count; i++) {
-      if(form.elements[`pancho_otro_check_${i}`]) {
-        str += `- ${c(`pancho_otro_check_${i}`)} Otro: ${v(`pancho_otro_nombre_${i}`)}. Paquetes de: ${v(`pancho_otro_uni_${i}`)} uni. Precio venta: $${v(`pancho_otro_precio_${i}`)} por paquete.\n`;
-      }
-    }
-    return str.trimEnd();
+    return str;
   };
 
   const getDynamicGasto = () => {
     let str = "";
     const container = document.getElementById('dynamic-gasto');
+    if(!container) return "";
     const count = parseInt(container.dataset.count);
     for(let i=0; i<count; i++) {
       if(form.elements[`gasto_otros_check_${i}`]) {
-        str += `- ${c(`gasto_otros_check_${i}`)} Otros: ${v(`gasto_otros_detalle_${i}`)}\n`;
+        str += `\n${c(`gasto_otros_check_${i}`)} Otros: ${v(`gasto_otros_detalle_${i}`)}`;
       }
     }
-    return str.trimEnd();
+    return str;
   };
 
   // Generate Markdown
   function generateMarkdown() {
-    return `# CUESTIONARIO DE RELEVAMIENTO OPERATIVO - PLANTA DE PANIFICACIÓN
+    return `Por favor, completá los espacios en blanco o marcá con una "X" según corresponda. Si alguna opción no se adapta a tu forma de trabajo, usá el espacio de "Aclaración" debajo de cada punto.
 
-Por favor, complete los espacios en blanco o marque con una "X" según corresponda.
+SECCIÓN 1: Catálogo de Productos y Presentaciones
+Para definir qué variedades fabrican, cómo las embolsan y a qué precio se venden.
 
----
+1. Panes de Hamburguesa (Variedades, unidades por paquete y precio de venta sugerido):
 
-### SECCIÓN 1: Catálogo de Productos, Presentaciones y Precios
-Necesitamos saber qué variedades fabrican, cómo las embolsan y a qué precio las venden.
+${c('hamb_clasico_check')} Clásico. Paquetes de: ${v('hamb_clasico_uni')} uni. Precio: $${v('hamb_clasico_precio')}
 
-1. Panes de Hamburguesa (Indique variedades, unidades por paquete y precio de venta por paquete):
-- ${c('hamb_clasico_check')} Clásico. Paquetes de: ${v('hamb_clasico_uni')} uni. Precio venta sugerido: $${v('hamb_clasico_precio')} por paquete.
-- ${c('hamb_sesamo_check')} Con Sésamo. Paquetes de: ${v('hamb_sesamo_uni')} uni. Precio venta sugerido: $${v('hamb_sesamo_precio')} por paquete.
-- ${c('hamb_papa_check')} Pan de Papa. Paquetes de: ${v('hamb_papa_uni')} uni. Precio venta sugerido: $${v('hamb_papa_precio')} por paquete.
-- ${c('hamb_brioche_check')} Brioche. Paquetes de: ${v('hamb_brioche_uni')} uni. Precio venta sugerido: $${v('hamb_brioche_precio')} por paquete.
-${getDynamicHamb()}
+${c('hamb_sesamo_check')} Con Sésamo. Paquetes de: ${v('hamb_sesamo_uni')} uni. Precio: $${v('hamb_sesamo_precio')}
+
+${c('hamb_papa_check')} Pan de Papa. Paquetes de: ${v('hamb_papa_uni')} uni. Precio: $${v('hamb_papa_precio')}
+
+${c('hamb_brioche_check')} Brioche. Paquetes de: ${v('hamb_brioche_uni')} uni. Precio: $${v('hamb_brioche_precio')}${getDynamicHamb()}
 ${getAclaracion('1. Panes de Hamburguesa')}
-
 2. Panes de Pancho / Salchicha:
-- ${c('pancho_corto_check')} Corto / Viena. Paquetes de: ${v('pancho_corto_uni')} uni. Precio venta sugerido: $${v('pancho_corto_precio')} por paquete.
-- ${c('pancho_largo_check')} Largo / Súper Pancho. Paquetes de: ${v('pancho_largo_uni')} uni. Precio venta sugerido: $${v('pancho_largo_precio')} por paquete.
-${getDynamicPancho()}
+
+${c('pancho_corto_check')} Corto / Viena. Paquetes de: ${v('pancho_corto_uni')} uni. Precio: $${v('pancho_corto_precio')}
+
+${c('pancho_largo_check')} Largo / Súper Pancho. Paquetes de: ${v('pancho_largo_uni')} uni. Precio: $${v('pancho_largo_precio')}${getDynamicPancho()}
 ${getAclaracion('2. Panes de Pancho')}
-
 3. Vida útil del producto:
-- ¿Cuántos días dura el producto envasado antes de su vencimiento?: ${v('vida_util_dias')} días.
+
+¿Cuántos días dura el producto envasado en óptimas condiciones antes de vencer?: ${v('vida_util_dias')} días.
 ${getAclaracion('3. Vida útil')}
-
----
-
-### SECCIÓN 2: Materia Prima e Insumos Críticos
-Cómo compran los insumos para calcular el costo de cada bache de producción.
-
-Indique el tamaño de presentación en que compran cada insumo (ej: Bolsa 50kg, Caja 10kg, Millar):
-- Harina: ${v('insumo_harina_pres')} (Costo estimado de la bolsa/presentación: $${v('insumo_harina_costo')})
-- Levadura (Fresca / Seca): ${v('insumo_levadura_pres')} (Costo: $${v('insumo_levadura_costo')})
-- Grasa / Margarina / Aceite: ${v('insumo_grasa_pres')} (Costo: $${v('insumo_grasa_costo')})
-- Sésamo: ${v('insumo_sesamo_pres')} (Costo: $${v('insumo_sesamo_costo')})
-- Aditivos / Mejoradores: ${v('insumo_aditivos_pres')} (Costo: $${v('insumo_aditivos_costo')})
-- Azúcar: ${v('insumo_azucar_pres')} (Costo: $${v('insumo_azucar_costo')})
-- Sal: ${v('insumo_sal_pres')} (Costo: $${v('insumo_sal_costo')})
-- Bolsas de Empaque y Precintos: ${v('insumo_bolsas_pres')} (Costo: ${v('insumo_bolsas_costo')})
-${getDynamicInsumo() ? getDynamicInsumo() : ""}
-
-**Stock Mínimo de Alerta:**
-- ¿Con cuántas bolsas de harina restantes en depósito consideran que están en "Stock Crítico"?: ${v('stock_critico_bolsas')} bolsas.
-${getAclaracion('Stock Mínimo de Alerta')}
-
----
-
-### SECCIÓN 3: Recetas y Rendimiento Teórico (El Amasijo)
-Tomando como base su tanda/amasijo estándar.
+SECCIÓN 2: Recetas y Rendimiento (El Amasijo)
+Para la calculadora de rendimientos teóricos basados en su tanda estándar.
 
 1. Tamaño del amasijo estándar:
-- Normalmente, prenden la amasadora utilizando ${v('amasijo_harina_kg')} Kg de harina por tanda.
-- ¿Cuántos litros de agua le agregan aproximadamente a esa tanda estándar de harina? ${v('amasijo_agua_litros')} Litros.
+
+Normalmente, prenden la amasadora utilizando ${v('amasijo_harina_kg')} Kg de harina por tanda.
+
+¿Cuántos litros de agua le agregan aproximadamente a esa tanda? ${v('amasijo_agua_litros')} Litros.
 ${getAclaracion('1. Tamaño del amasijo')}
-
 2. Peso de corte (Bolladora / Cortadora):
-- ¿De cuántos gramos cortan el bollo crudo para la hamburguesa? ${v('peso_hamburguesa_gramos')} gramos.
-- ¿De cuántos gramos cortan el bollo crudo para el pancho? ${v('peso_pancho_gramos')} gramos.
+
+Bollo crudo para hamburguesa: ${v('peso_hamburguesa_gramos')} gramos.
+
+Bollo crudo para pancho: ${v('peso_pancho_gramos')} gramos.
 ${getAclaracion('2. Peso de corte')}
-
 3. Rendimiento esperado en un día perfecto:
-- Tanda de Hamburguesa: deberían salir ${v('rend_hamburguesa_paquetes')} paquetes terminados.
-- Tanda de Pancho: deberían salir ${v('rend_pancho_paquetes')} paquetes terminados.
+
+De una tanda estándar de hamburguesas deberían salir ${v('rend_hamburguesa_paquetes')} paquetes terminados.
+
+De una tanda estándar de panchos deberían salir ${v('rend_pancho_paquetes')} paquetes terminados.
 ${getAclaracion('3. Rendimiento esperado')}
+SECCIÓN 3: Capacidad Operativa (Carros y Bandejas)
+Para los cálculos de horneado y estiba.
 
----
+1. Capacidad de las bandejas (latas):
 
-### SECCIÓN 4: Operativa en Planta (Carros y Bandejas)
-Para la calculadora rápida de la aplicación.
+¿Cuántos panes de hamburguesa entran en una bandeja?: ${v('bandeja_hamburguesa_uni')} uni.
 
-1. Capacidad de las bandejas:
-- ¿Cuántos panes de hamburguesa entran en una bandeja?: ${v('bandeja_hamburguesa_uni')} uni.
-- ¿Cuántos panes de pancho entran en una bandeja?: ${v('bandeja_pancho_uni')} uni.
+¿Cuántos panes de pancho entran en una bandeja?: ${v('bandeja_pancho_uni')} uni.
 ${getAclaracion('1. Capacidad de las bandejas')}
-
 2. Capacidad de los carros:
-- ¿Cuántas bandejas entran en un carro completo?: ${v('carro_bandejas_num')} bandejas por carro.
+
+¿Cuántas bandejas entran en un carro completo?: ${v('carro_bandejas_num')} bandejas.
 ${getAclaracion('2. Capacidad de los carros')}
+SECCIÓN 4: Materia Prima e Insumos Críticos
+Para calcular el costo real, alertas de stock y trazabilidad.
 
----
+1. Presentación y Costo de Insumos Críticos:
+(Indicar tamaño de compra, ej: Bolsa 50kg, Caja 10kg, Millar, y precio actual)
 
-### SECCIÓN 5: Mermas y Desperdicios
-Cómo miden lo que se pierde durante la jornada.
+Harina: ${v('insumo_harina_pres')} (Costo: $${v('insumo_harina_costo')})
+
+Levadura (Fresca / Seca): ${v('insumo_levadura_pres')} (Costo: $${v('insumo_levadura_costo')})
+
+Grasa / Margarina / Aceite: ${v('insumo_grasa_pres')} (Costo: $${v('insumo_grasa_costo')})
+
+Sésamo: ${v('insumo_sesamo_pres')} (Costo: $${v('insumo_sesamo_costo')})
+
+Aditivos / Mejoradores: ${v('insumo_aditivos_pres')} (Costo: $${v('insumo_aditivos_costo')})
+
+Azúcar: ${v('insumo_azucar_pres')} (Costo: $${v('insumo_azucar_costo')})
+
+Sal: ${v('insumo_sal_pres')} (Costo: $${v('insumo_sal_costo')})
+
+Bolsas / Precintos: ${v('insumo_bolsas_pres')} (Costo: $${v('insumo_bolsas_costo')})${getDynamicInsumo()}
+${getAclaracion('1. Presentación y Costo')}
+2. Trazabilidad (Lotes y Vencimientos):
+
+Cuando ingresa materia prima al depósito, ¿anotan el número de lote y vencimiento del proveedor?
+
+${c('trazabilidad_lotes', 'Sí, llevamos control estricto de qué lote usamos en cada amasijo.')} Sí, llevamos control estricto de qué lote usamos en cada amasijo.
+
+${c('trazabilidad_lotes', "No, usamos el método 'lo primero que entra es lo primero que sale' a ojo.")} No, usamos el método "lo primero que entra es lo primero que sale" a ojo.
+${getAclaracion('2. Trazabilidad')}
+3. Alertas de Stock Mínimo:
+
+¿Con cuántas bolsas de harina restantes en depósito consideran que están en "Stock Crítico"?: ${v('stock_critico_bolsas')} bolsas.
+${getAclaracion('3. Alertas de Stock Mínimo')}
+SECCIÓN 5: Mermas, Desperdicios y Reciclaje
+Para auditar las pérdidas de la jornada.
 
 1. Merma de Masa (Cruda):
-¿Miden o pesan la masa que sobra/se descarta antes de hornear?
-- ${c('merma_masa', 'Sí, la pesamos en Kilos')} Sí, la pesamos en Kilos.
-- ${c('merma_masa', 'No la medimos')} No la medimos.
+
+¿Miden o pesan la masa de recorte/descarte antes de que vaya al horno?
+
+${c('merma_masa', 'Sí, la pesamos en Kilos.')} Sí, la pesamos en Kilos.
+
+${c('merma_masa', 'No la medimos.')} No la medimos.
 ${getAclaracion('1. Merma de Masa')}
+2. Merma de Producto Terminado (Cocido/Envasado):
 
-2. Merma de Producto Terminado (Cocido):
-El pan quemado o deforme, ¿cómo lo contabilizan para descartarlo?
-- ${c('merma_producto', 'Por unidad')} Por unidad (ej: "se tiraron 15 panes").
-- ${c('merma_producto', 'Por bandejas')} Por bandejas (ej: "se quemó media bandeja").
-- ${c('merma_producto', 'Por paquetes')} Por paquetes (ej: "se perdieron 3 paquetes").
-${getAclaracion('2. Merma de Producto')}
+El pan quemado, deforme o roto en el empaque, ¿cómo lo contabilizan para descartarlo?
 
-3. Reciclaje:
-El pan de descarte, ¿se reutiliza (ej. para pan rallado o venta secundaria)?
-- ${c('reciclaje', 'Sí, se recupera parte del valor')} Sí, se recupera parte del valor ($${v('reciclaje_valor')} por kg/bolsa recuperada).
-- ${c('reciclaje', 'No, se tira a la basura (pérdida total)')} No, se tira a la basura (pérdida total).
-${getAclaracion('3. Reciclaje')}
+${c('merma_producto', "Por unidad (ej: '15 panes').")} Por unidad (ej: "15 panes").
 
----
+${c('merma_producto', "Por bandejas (ej: 'media bandeja').")} Por bandejas (ej: "media bandeja").
 
-### SECCIÓN 6: Costos y Ventas Diarias
+${c('merma_producto', "Por paquetes (ej: '3 paquetes').")} Por paquetes (ej: "3 paquetes").
+
+${c('merma_producto', 'Otros motivos')} Otros motivos: ${v('merma_otros_detalle')}
+${getAclaracion('2. Merma de Producto Terminado')}
+3. Reciclaje y Recupero:
+
+¿Se reutiliza el pan de descarte (ej. para pan rallado o venta secundaria a menor precio)?
+
+${c('reciclaje', 'Sí, recuperamos parte del valor')} Sí, recuperamos aprox. $${v('reciclaje_valor')} por kg/bolsa.
+
+${c('reciclaje', 'No, se tira a la basura (pérdida total).')} No, se tira a la basura (pérdida total).
+${getAclaracion('3. Reciclaje y Recupero')}
+SECCIÓN 6: Gastos Operativos y Modalidad de Ventas
+Para el registro comercial y la rentabilidad neta del día.
+
 1. Gastos diarios adicionales:
+
 Además de la materia prima, ¿qué otros gastos cargan día a día para restar de la ganancia?
-- ${c('gasto_ninguno')} Ninguno, solo materia prima.
-- ${c('gasto_combustible')} Combustible / Fletes de entrega.
-- ${c('gasto_servicios')} Servicios (Luz/Gas estimados por día).
-- ${c('gasto_empleados')} Empleados / Jornales diarios.
-${getDynamicGasto()}
+
+${c('gasto_ninguno')} Ninguno, solo materia prima.
+
+${c('gasto_combustible')} Combustible / Fletes de entrega.
+
+${c('gasto_servicios')} Servicios (Luz/Gas estimados por día).
+
+${c('gasto_empleados')} Empleados / Jornales diarios.${getDynamicGasto()}
 ${getAclaracion('1. Gastos diarios adicionales')}
+2. Clientes Fijos y Mayoristas:
 
-2. Modalidad de Ventas y Cobros:
-Al finalizar el día, ¿cómo registran las ventas?
-- ${c('registro_ventas', 'Contamos los paquetes físicos entregados/vendidos')} Contamos los paquetes físicos entregados/vendidos.
-- ${c('registro_ventas', 'Solo contamos el dinero ingresado en caja/banco')} Solo contamos el dinero ingresado en caja/banco.
+¿Manejan una lista de clientes fijos (ej. hamburgueserías, pancherías, supermercados) con precios especiales?
 
-¿Manejan clientes con Fiado / Cuenta Corriente (pago a 7 o 15 días)?
-- ${c('fiado_cc', 'Sí, necesitamos registrar si la venta fue cobrada al contado o quedó pendiente')} Sí, necesitamos registrar si la venta fue cobrada al contado o quedó pendiente.
-- ${c('fiado_cc', 'No, todo se cobra en el día')} No, todo se cobra en el día.
-${getAclaracion('2. Modalidad de Ventas')}
+${c('clientes_mayoristas', 'Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app.')} Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app.
 
----
+${c('clientes_mayoristas', 'No, vendemos a consumidor final o todos pagan el mismo precio estándar.')} No, vendemos a consumidor final o todos pagan el mismo precio estándar.
+${getAclaracion('2. Clientes Fijos y Mayoristas')}
+3. Cobranza y Cuentas Corrientes:
 
-### SECCIÓN 7: Uso de la App e Infraestructura en Planta
+Al finalizar el día o registrar pedidos, ¿necesitan llevar el control de quién pagó y quién debe?
+
+${c('fiado_cc', 'Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo.')} Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo.
+
+${c('fiado_cc', 'No, todo se cobra al contado en el día.')} No, todo se cobra al contado en el día.
+${getAclaracion('3. Cobranza y Cuentas Corrientes')}
+SECCIÓN 7: Infraestructura, Uso de la App y Mantenimiento
+Para configurar la conectividad, los roles de usuario y la maquinaria.
+
 1. Turnos de producción:
-- ¿Cuántos turnos trabajan por día? ${v('turnos_cantidad')} turnos (Mañana, Tarde, Noche).
+
+¿Cuántos turnos trabajan por día?: ${v('turnos_cantidad')} turnos (Mañana, Tarde, Noche).
 ${getAclaracion('1. Turnos de producción')}
+2. Dispositivo y Conectividad en Planta:
 
-2. Usuario principal:
-¿Quién cargará los datos en la app durante el trabajo?
-- ${c('usuario_principal', 'Maestro panadero / Cuadrero')} Maestro panadero / Cuadrero.
-- ${c('usuario_principal', 'Encargado de turno / Supervisor')} Encargado de turno / Supervisor.
-- ${c('usuario_principal', 'El dueño de la planta')} El dueño de la planta.
-${getAclaracion('2. Usuario principal')}
-
-3. Dispositivo de uso:
 ¿En qué tipo de dispositivo se usará la aplicación principalmente?
-- ${c('dispositivo', 'Celular Android estándar')} Celular Android estándar.
-- ${c('dispositivo', 'Celular antiguo / lento')} Celular antiguo/lento.
-- ${c('dispositivo', 'Tablet')} Tablet.
-- ${c('dispositivo', 'iPhone')} iPhone.
-${getAclaracion('3. Dispositivo de uso')}
 
-4. Conectividad en la Planta:
-¿Hay buena señal de Wi-Fi en la zona de amasado/hornos donde se usará el dispositivo?
-- ${c('wifi_planta', 'Sí')} Sí.
-- ${c('wifi_planta', 'No')} No.
-${getAclaracion('4. Conectividad en la Planta')}
+${c('dispositivo', 'Tablet (Android / iPad).')} Tablet (Android / iPad).
+
+${c('dispositivo', 'Celular del encargado.')} Celular del encargado.
+
+${c('dispositivo', 'Computadora de escritorio / Notebook.')} Computadora de escritorio / Notebook.
+
+¿Hay buena señal de Wi-Fi o datos móviles en el sector de amasado y hornos?
+
+${c('wifi_planta', 'Sí, hay buena señal siempre.')} Sí, hay buena señal siempre.
+
+${c('wifi_planta', 'No, la señal es mala (la app debe trabajar sin internet y sincronizar después).')} No, la señal es mala (la app debe trabajar sin internet y sincronizar después).
+${getAclaracion('2. Dispositivo y Conectividad')}
+3. Roles y Privacidad:
+
+Si el sistema lo va a usar un empleado (maestro panadero, encargado de turno), ¿qué información puede ver en la pantalla?
+
+${c('roles_privacidad', 'Puede ver todo (precios de costo, precios de venta, ganancias diarias).')} Puede ver todo (precios de costo, precios de venta, ganancias diarias).
+
+${c('roles_privacidad', 'Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta.')} Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta.
+
+${c('roles_privacidad', 'No la usará ningún operario, la aplicación la manejará exclusivamente el dueño.')} No la usará ningún operario, la aplicación la manejará exclusivamente el dueño.
+${getAclaracion('3. Roles y Privacidad')}
+4. Maquinaria y Mantenimiento:
+
+¿Les interesa llevar un registro en la aplicación de los arreglos o mantenimientos de las máquinas principales (Amasadora, Sobadora, Horno)?
+
+${c('maquinaria_mantenimiento', 'Sí, nos sirve para saber cuánto gastamos en mantenimiento.')} Sí, nos sirve para saber cuánto gastamos en mantenimiento.
+
+${c('maquinaria_mantenimiento', 'No, lo manejamos por fuera o no nos interesa registrarlo por ahora.')} No, lo manejamos por fuera o no nos interesa registrarlo por ahora.
+${getAclaracion('4. Maquinaria y Mantenimiento')}
 `;
   }
 
@@ -480,7 +527,6 @@ ${getAclaracion('4. Conectividad en la Planta')}
       document.querySelectorAll('.aclaracion-text').forEach(el => {
         el.classList.add('hidden');
       });
-      // Remover dinamicos extra (opcional pero lo dejamos simple recargando)
       location.reload();
     }
   });
