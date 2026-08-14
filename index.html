@@ -15,10 +15,10 @@
   <header class="sticky-header">
     <div class="header-container">
       <div class="brand">
-        <span class="brand-icon">🍞</span>
+        <span class="brand-icon">🥖</span>
         <div>
-          <h1 class="brand-title">Relevamiento Operativo</h1>
-          <p class="brand-subtitle">Planta de Panificación</p>
+          <h1 class="brand-title">Academia de Pan</h1>
+          <p class="brand-subtitle">Relevamiento Operativo de Planta</p>
         </div>
       </div>
       
@@ -37,26 +37,42 @@
   <!-- Hero Section -->
   <section class="hero-banner">
     <div class="hero-content">
-      <span class="badge-hero">Cuestionario Técnico</span>
-      <h2>Relevamiento de Planta</h2>
-      <p>Por favor, completá los datos requeridos. Sus respuestas se guardan automáticamente en este dispositivo.</p>
+      <span class="badge-hero">Academia de Pan</span>
+      <h2>Relevamiento Operativo de Planta</h2>
+      <p>Por favor, completá los espacios en blanco o marcá con una "X" según corresponda. Sus respuestas se guardan automáticamente en este dispositivo.</p>
     </div>
   </section>
 
   <!-- Main Content Layout -->
   <main class="main-layout">
     
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation (14 Secciones) -->
     <aside class="section-nav">
-      <p class="nav-title">Secciones</p>
+      <p class="nav-title">Navegación (14 Secciones)</p>
       <nav>
+        <div class="nav-group-label">📦 PRODUCCIÓN</div>
         <a href="#sec-1" class="nav-item active"><span class="step-num">1</span> Productos y Precios</a>
-        <a href="#sec-2" class="nav-item"><span class="step-num">2</span> Recetas y Rendimiento</a>
+        <a href="#sec-2" class="nav-item"><span class="step-num">2</span> Recetas y Amasijo</a>
         <a href="#sec-3" class="nav-item"><span class="step-num">3</span> Carros y Bandejas</a>
-        <a href="#sec-4" class="nav-item"><span class="step-num">4</span> Materia Prima e Insumos</a>
-        <a href="#sec-5" class="nav-item"><span class="step-num">5</span> Mermas y Reciclaje</a>
-        <a href="#sec-6" class="nav-item"><span class="step-num">6</span> Gastos y Ventas</a>
-        <a href="#sec-7" class="nav-item"><span class="step-num">7</span> Infraestructura y App</a>
+        <a href="#sec-4" class="nav-item"><span class="step-num">4</span> Turnos de Producción</a>
+
+        <div class="nav-group-label mt-10">🌾 INSUMOS & LOTES</div>
+        <a href="#sec-5" class="nav-item"><span class="step-num">5</span> Materia Prima e Insumos</a>
+        <a href="#sec-6" class="nav-item"><span class="step-num">6</span> Descuento FIFO / FEFO</a>
+
+        <div class="nav-group-label mt-10">🗑️ MERMAS</div>
+        <a href="#sec-7" class="nav-item"><span class="step-num">7</span> Mermas y Reciclaje</a>
+        <a href="#sec-8" class="nav-item"><span class="step-num">8</span> Valorización Económica</a>
+
+        <div class="nav-group-label mt-10">🛒 COMERCIAL & PEDIDOS</div>
+        <a href="#sec-9" class="nav-item"><span class="step-num">9</span> Gastos y Ventas</a>
+        <a href="#sec-10" class="nav-item"><span class="step-num">10</span> Pedidos y Reservas</a>
+        <a href="#sec-11" class="nav-item"><span class="step-num">11</span> Trazabilidad de Ventas</a>
+
+        <div class="nav-group-label mt-10">🔒 TECNOLOGÍA</div>
+        <a href="#sec-12" class="nav-item"><span class="step-num">12</span> Dispositivo y Wi-Fi</a>
+        <a href="#sec-13" class="nav-item"><span class="step-num">13</span> Seguridad por PIN</a>
+        <a href="#sec-14" class="nav-item"><span class="step-num">14</span> Aclaraciones Finales</a>
       </nav>
     </aside>
 
@@ -74,22 +90,22 @@
 
           <!-- Hamburguesas -->
           <div class="question-group">
-            <h3>1. Panes de Hamburguesa</h3>
-            <p class="hint">Variedades, unidades por paquete y precio de venta sugerido.</p>
+            <h3>1. Panes de Hamburguesa (Variedades permanentes y base)</h3>
+            <p class="hint">Indique qué variedades elaboran, unidades por paquete y precio de venta sugerido.</p>
 
-            <div class="options-grid">
-              <!-- Clásico -->
+            <div class="options-grid" id="grid-hamb" data-count="1">
+              <!-- Pan clásico -->
               <div class="option-card">
                 <label class="custom-checkbox-label">
                   <input type="checkbox" name="hamb_clasico_check" class="toggle-inputs" data-target="hamb_clasico_fields">
                   <span class="checkbox-custom"></span>
-                  <span class="option-title">Clásico</span>
+                  <span class="option-title">Pan clásico de hamburguesa</span>
                 </label>
                 <div id="hamb_clasico_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
-                      <input type="number" name="hamb_clasico_uni" placeholder="ej: 6" min="1">
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_clasico_uni" placeholder="ej: 4 o 6" min="1">
                       <span class="suffix">uni</span>
                     </div>
                   </div>
@@ -103,18 +119,18 @@
                 </div>
               </div>
 
-              <!-- Con Sésamo -->
+              <!-- Sésamo blanco ("Nube") -->
               <div class="option-card">
                 <label class="custom-checkbox-label">
-                  <input type="checkbox" name="hamb_sesamo_check" class="toggle-inputs" data-target="hamb_sesamo_fields">
+                  <input type="checkbox" name="hamb_sesamo_blanco_check" class="toggle-inputs" data-target="hamb_sesamo_blanco_fields">
                   <span class="checkbox-custom"></span>
-                  <span class="option-title">Con Sésamo</span>
+                  <span class="option-title">Pan con sésamo blanco ("Nube")</span>
                 </label>
-                <div id="hamb_sesamo_fields" class="sub-fields disabled">
+                <div id="hamb_sesamo_blanco_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
-                      <input type="number" name="hamb_sesamo_uni" placeholder="ej: 6" min="1">
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_sesamo_blanco_uni" placeholder="ej: 4 o 6" min="1">
                       <span class="suffix">uni</span>
                     </div>
                   </div>
@@ -122,7 +138,82 @@
                     <label>Precio:</label>
                     <div class="input-with-prefix">
                       <span class="prefix">$</span>
-                      <input type="number" name="hamb_sesamo_precio" placeholder="0.00" step="0.01">
+                      <input type="number" name="hamb_sesamo_blanco_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mix de sésamo -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="hamb_mix_sesamo_check" class="toggle-inputs" data-target="hamb_mix_sesamo_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pan con mix de sésamo</span>
+                </label>
+                <div id="hamb_mix_sesamo_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_mix_sesamo_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="hamb_mix_sesamo_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mix de semillas -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="hamb_mix_semillas_check" class="toggle-inputs" data-target="hamb_mix_semillas_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pan con mix de semillas</span>
+                </label>
+                <div id="hamb_mix_semillas_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_mix_semillas_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="hamb_mix_semillas_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brioche -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="hamb_brioche_check" class="toggle-inputs" data-target="hamb_brioche_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pan Brioche</span>
+                </label>
+                <div id="hamb_brioche_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_brioche_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="hamb_brioche_precio" placeholder="0.00" step="0.01">
                     </div>
                   </div>
                 </div>
@@ -138,8 +229,8 @@
                 <div id="hamb_papa_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
-                      <input type="number" name="hamb_papa_uni" placeholder="ej: 4" min="1">
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_papa_uni" placeholder="ej: 4 o 6" min="1">
                       <span class="suffix">uni</span>
                     </div>
                   </div>
@@ -153,18 +244,18 @@
                 </div>
               </div>
 
-              <!-- Brioche -->
+              <!-- Sliders -->
               <div class="option-card">
                 <label class="custom-checkbox-label">
-                  <input type="checkbox" name="hamb_brioche_check" class="toggle-inputs" data-target="hamb_brioche_fields">
+                  <input type="checkbox" name="hamb_sliders_check" class="toggle-inputs" data-target="hamb_sliders_fields">
                   <span class="checkbox-custom"></span>
-                  <span class="option-title">Brioche</span>
+                  <span class="option-title">Sliders (pan cuadrado mini)</span>
                 </label>
-                <div id="hamb_brioche_fields" class="sub-fields disabled">
+                <div id="hamb_sliders_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
-                      <input type="number" name="hamb_brioche_uni" placeholder="ej: 4" min="1">
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_sliders_uni" placeholder="ej: 12" min="1">
                       <span class="suffix">uni</span>
                     </div>
                   </div>
@@ -172,45 +263,43 @@
                     <label>Precio:</label>
                     <div class="input-with-prefix">
                       <span class="prefix">$</span>
-                      <input type="number" name="hamb_brioche_precio" placeholder="0.00" step="0.01">
+                      <input type="number" name="hamb_sliders_precio" placeholder="0.00" step="0.01">
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Dinámicos Hamburguesa -->
-              <div class="dynamic-container full-width" id="dynamic-hamb" data-count="1">
-                <div class="option-card full-width dynamic-item">
-                  <label class="custom-checkbox-label">
-                    <input type="checkbox" name="hamb_otro_check_0" class="toggle-inputs" data-target="hamb_otro_fields_0">
-                    <span class="checkbox-custom"></span>
-                    <span class="option-title">Otro Tipo de Pan de Hamburguesa</span>
-                  </label>
-                  <div id="hamb_otro_fields_0" class="sub-fields disabled">
-                    <div class="input-inline">
-                      <label>Nombre Variedad:</label>
-                      <input type="text" name="hamb_otro_nombre_0" placeholder="ej: Integral / XL">
+              <!-- Dinámico 0 Hamburguesa (Completa el par 8) -->
+              <div class="option-card dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="hamb_otro_check_0" class="toggle-inputs" data-target="hamb_otro_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Otro Pan de Hamburguesa</span>
+                </label>
+                <div id="hamb_otro_fields_0" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Nombre Variedad:</label>
+                    <input type="text" name="hamb_otro_nombre_0" placeholder="ej: Integral / Parmesano">
+                  </div>
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="hamb_otro_uni_0" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
                     </div>
-                    <div class="input-inline">
-                      <label>Paquetes de:</label>
-                      <div class="input-with-suffix">
-                        <input type="number" name="hamb_otro_uni_0" placeholder="ej: 6" min="1">
-                        <span class="suffix">uni</span>
-                      </div>
-                    </div>
-                    <div class="input-inline">
-                      <label>Precio:</label>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="hamb_otro_precio_0" placeholder="0.00" step="0.01">
-                      </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="hamb_otro_precio_0" placeholder="0.00" step="0.01">
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('hamb', 'Otro Tipo de Pan de Hamburguesa')">+ Agregar otra variedad</button>
               </div>
-
             </div>
+
+            <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('hamb', 'Otro Pan de Hamburguesa')">+ Agregar otra variedad de hamburguesa</button>
 
             <div class="aclaracion-box mt-20">
               <label class="custom-checkbox-label">
@@ -222,13 +311,38 @@
             </div>
           </div>
 
-          <!-- Panchos -->
+          <!-- Panes de Pancho -->
           <div class="question-group">
-            <h3>2. Panes de Pancho / Salchicha</h3>
+            <h3>2. Panes de Pancho / Hot Dog</h3>
             <p class="hint">Variedades, unidades por paquete y precio de venta sugerido.</p>
 
-            <div class="options-grid">
-              <!-- Corto -->
+            <div class="options-grid" id="grid-pancho" data-count="1">
+              <!-- Pancho Artesanal -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="pancho_artesanal_check" class="toggle-inputs" data-target="pancho_artesanal_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pancho / Hot Dog Artesanal</span>
+                </label>
+                <div id="pancho_artesanal_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="pancho_artesanal_uni" placeholder="ej: 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="pancho_artesanal_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Corto / Viena -->
               <div class="option-card">
                 <label class="custom-checkbox-label">
                   <input type="checkbox" name="pancho_corto_check" class="toggle-inputs" data-target="pancho_corto_fields">
@@ -238,7 +352,7 @@
                 <div id="pancho_corto_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
+                    <div class="input-with-suffix compact">
                       <input type="number" name="pancho_corto_uni" placeholder="ej: 6" min="1">
                       <span class="suffix">uni</span>
                     </div>
@@ -253,7 +367,7 @@
                 </div>
               </div>
 
-              <!-- Largo -->
+              <!-- Largo / Súper Pancho -->
               <div class="option-card">
                 <label class="custom-checkbox-label">
                   <input type="checkbox" name="pancho_largo_check" class="toggle-inputs" data-target="pancho_largo_fields">
@@ -263,7 +377,7 @@
                 <div id="pancho_largo_fields" class="sub-fields disabled">
                   <div class="input-inline">
                     <label>Paquetes de:</label>
-                    <div class="input-with-suffix">
+                    <div class="input-with-suffix compact">
                       <input type="number" name="pancho_largo_uni" placeholder="ej: 6" min="1">
                       <span class="suffix">uni</span>
                     </div>
@@ -278,39 +392,37 @@
                 </div>
               </div>
 
-              <!-- Dinámicos Pancho -->
-              <div class="dynamic-container full-width" id="dynamic-pancho" data-count="1">
-                <div class="option-card full-width dynamic-item">
-                  <label class="custom-checkbox-label">
-                    <input type="checkbox" name="pancho_otro_check_0" class="toggle-inputs" data-target="pancho_otro_fields_0">
-                    <span class="checkbox-custom"></span>
-                    <span class="option-title">Otro Pan de Pancho</span>
-                  </label>
-                  <div id="pancho_otro_fields_0" class="sub-fields disabled">
-                    <div class="input-inline">
-                      <label>Nombre Variedad:</label>
-                      <input type="text" name="pancho_otro_nombre_0" placeholder="ej: Pancho gigante XL">
+              <!-- Dinámico 0 Pancho (Completa el par 4) -->
+              <div class="option-card dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="pancho_otro_check_0" class="toggle-inputs" data-target="pancho_otro_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Otro Pan de Pancho</span>
+                </label>
+                <div id="pancho_otro_fields_0" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Nombre Variedad:</label>
+                    <input type="text" name="pancho_otro_nombre_0" placeholder="ej: Pancho gigante XL / Semillado">
+                  </div>
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="pancho_otro_uni_0" placeholder="ej: 6" min="1">
+                      <span class="suffix">uni</span>
                     </div>
-                    <div class="input-inline">
-                      <label>Paquetes de:</label>
-                      <div class="input-with-suffix">
-                        <input type="number" name="pancho_otro_uni_0" placeholder="ej: 6" min="1">
-                        <span class="suffix">uni</span>
-                      </div>
-                    </div>
-                    <div class="input-inline">
-                      <label>Precio:</label>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="pancho_otro_precio_0" placeholder="0.00" step="0.01">
-                      </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="pancho_otro_precio_0" placeholder="0.00" step="0.01">
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('pancho', 'Otro Pan de Pancho')">+ Agregar otra variedad</button>
               </div>
-
             </div>
+
+            <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('pancho', 'Otro Pan de Pancho')">+ Agregar otra variedad de pancho</button>
 
             <div class="aclaracion-box mt-20">
               <label class="custom-checkbox-label">
@@ -322,9 +434,132 @@
             </div>
           </div>
 
-          <!-- Vida útil -->
+          <!-- Ediciones Especiales -->
           <div class="question-group">
-            <h3>3. Vida útil del producto</h3>
+            <h3>3. Ediciones Especiales / Estacionales</h3>
+            <p class="hint">Variedades temáticas o por temporada que producen a lo largo del año.</p>
+
+            <div class="options-grid" id="grid-especial" data-count="1">
+              <!-- Pan de Calabaza -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="especial_calabaza_check" class="toggle-inputs" data-target="especial_calabaza_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pan de Calabaza 🎃 (Halloween)</span>
+                </label>
+                <div id="especial_calabaza_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="especial_calabaza_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="especial_calabaza_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pan Negro -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="especial_negro_check" class="toggle-inputs" data-target="especial_negro_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Pan Negro artesanal 🖤 (Halloween)</span>
+                </label>
+                <div id="especial_negro_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="especial_negro_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="especial_negro_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panes Navideños -->
+              <div class="option-card">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="especial_navidad_check" class="toggle-inputs" data-target="especial_navidad_fields">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Panes navideños rojos y verdes 🎄</span>
+                </label>
+                <div id="especial_navidad_fields" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="especial_navidad_uni" placeholder="ej: 4 o 6" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="especial_navidad_precio" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dinámico 0 Especial (Completa el par 4) -->
+              <div class="option-card dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="especial_otro_check_0" class="toggle-inputs" data-target="especial_otro_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span class="option-title">Otra Edición Especial</span>
+                </label>
+                <div id="especial_otro_fields_0" class="sub-fields disabled">
+                  <div class="input-inline">
+                    <label>Nombre Edición:</label>
+                    <input type="text" name="especial_otro_nombre_0" placeholder="ej: Pan de Remolacha / San Valentín">
+                  </div>
+                  <div class="input-inline">
+                    <label>Paquetes de:</label>
+                    <div class="input-with-suffix compact">
+                      <input type="number" name="especial_otro_uni_0" placeholder="ej: 4" min="1">
+                      <span class="suffix">uni</span>
+                    </div>
+                  </div>
+                  <div class="input-inline">
+                    <label>Precio:</label>
+                    <div class="input-with-prefix">
+                      <span class="prefix">$</span>
+                      <input type="number" name="especial_otro_precio_0" placeholder="0.00" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('especial', 'Otra Edición Especial')">+ Agregar otra edición especial</button>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+
+          <!-- Vida Útil -->
+          <div class="question-group">
+            <h3>4. Vida útil del producto</h3>
             <div class="single-field-row">
               <label for="vida_util">¿Cuántos días dura el producto envasado en óptimas condiciones antes de vencer?</label>
               <div class="input-with-suffix compact">
@@ -357,14 +592,14 @@
             <div class="grid-2-col">
               <div class="field-box">
                 <label for="amasijo_harina">Kilos de harina por tanda:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="amasijo_harina" name="amasijo_harina_kg" placeholder="ej: 50" step="0.1">
                   <span class="suffix">Kg</span>
                 </div>
               </div>
               <div class="field-box">
                 <label for="amasijo_agua">Litros de agua aproximadamente:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="amasijo_agua" name="amasijo_agua_litros" placeholder="ej: 30" step="0.1">
                   <span class="suffix">Litros</span>
                 </div>
@@ -386,14 +621,14 @@
             <div class="grid-2-col">
               <div class="field-box">
                 <label for="peso_hamb">Bollo crudo para hamburguesa:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="peso_hamb" name="peso_hamburguesa_gramos" placeholder="ej: 90">
                   <span class="suffix">gramos</span>
                 </div>
               </div>
               <div class="field-box">
                 <label for="peso_pancho">Bollo crudo para pancho:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="peso_pancho" name="peso_pancho_gramos" placeholder="ej: 60">
                   <span class="suffix">gramos</span>
                 </div>
@@ -415,14 +650,14 @@
             <div class="grid-2-col">
               <div class="field-box">
                 <label for="rend_hamb">De una tanda estándar de hamburguesas deberían salir:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="rend_hamb" name="rend_hamburguesa_paquetes" placeholder="ej: 150">
                   <span class="suffix">paquetes</span>
                 </div>
               </div>
               <div class="field-box">
                 <label for="rend_pancho">De una tanda estándar de panchos deberían salir:</label>
-                <div class="input-with-suffix">
+                <div class="input-with-suffix compact">
                   <input type="number" id="rend_pancho" name="rend_pancho_paquetes" placeholder="ej: 200">
                   <span class="suffix">paquetes</span>
                 </div>
@@ -449,7 +684,7 @@
           </div>
 
           <div class="question-group">
-            <h3>1. Capacidad de las bandejas</h3>
+            <h3>1. Capacidad de las bandejas (latas)</h3>
             <div class="grid-2-col">
               <div class="field-box">
                 <label for="bandeja_hamb">¿Cuántos panes de hamburguesa entran en una bandeja?</label>
@@ -502,137 +737,55 @@
         <section id="sec-4" class="card-section">
           <div class="section-header">
             <span class="section-badge">Sección 4</span>
-            <h2>Materia Prima e Insumos Críticos</h2>
-            <p class="section-desc">Para calcular el costo real, alertas de stock y trazabilidad.</p>
+            <h2>Turnos de Producción</h2>
+            <p class="section-desc">Configuración de horarios y rotación de trabajo.</p>
           </div>
 
           <div class="question-group">
-            <h3>1. Presentación y Costo de Insumos Críticos</h3>
-            <p class="hint">Indicar tamaño de compra (ej: Bolsa 50kg, Caja 10kg, Millar) y precio actual.</p>
-
-            <div class="table-responsive">
-              <table class="form-table">
-                <thead>
-                  <tr>
-                    <th>Insumo</th>
-                    <th>Presentación de compra</th>
-                    <th>Costo de la presentación</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Harina</strong></td>
-                    <td><input type="text" name="insumo_harina_pres" placeholder="ej: Bolsa 50kg"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_harina_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Levadura</strong> (Fresca / Seca)</td>
-                    <td><input type="text" name="insumo_levadura_pres" placeholder="ej: Caja 10kg fresca"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_levadura_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Grasa / Margarina / Aceite</strong></td>
-                    <td><input type="text" name="insumo_grasa_pres" placeholder="ej: Caja 20kg margarina"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_grasa_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Sésamo</strong></td>
-                    <td><input type="text" name="insumo_sesamo_pres" placeholder="ej: Bolsa 25kg"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_sesamo_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Aditivos / Mejoradores</strong></td>
-                    <td><input type="text" name="insumo_aditivos_pres" placeholder="ej: Bolsa 10kg"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_aditivos_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Azúcar</strong></td>
-                    <td><input type="text" name="insumo_azucar_pres" placeholder="ej: Bolsa 50kg"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_azucar_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Sal</strong></td>
-                    <td><input type="text" name="insumo_sal_pres" placeholder="ej: Bolsa 25kg"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_sal_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Bolsas / Precintos</strong></td>
-                    <td><input type="text" name="insumo_bolsas_pres" placeholder="ej: Millar de bolsas"></td>
-                    <td>
-                      <div class="input-with-prefix">
-                        <span class="prefix">$</span>
-                        <input type="number" name="insumo_bolsas_costo" placeholder="0.00" step="0.01">
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-                <tbody id="dynamic-insumo" data-count="0">
-                </tbody>
-              </table>
-              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('insumo', 'Insumo Adicional', false, true)">+ Agregar otro insumo</button>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario sobre insumos</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
-          </div>
-
-          <!-- Trazabilidad (Lotes y Vencimientos) -->
-          <div class="question-group">
-            <h3>2. Trazabilidad (Lotes y Vencimientos)</h3>
-            <p class="hint">Cuando ingresa materia prima al depósito, ¿anotan el número de lote y vencimiento del proveedor?</p>
-
+            <h3>1. Turnos que utilizan actualmente</h3>
             <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="trazabilidad_lotes" value="Sí, llevamos control estricto de qué lote usamos en cada amasijo.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, llevamos control estricto de qué lote usamos en cada amasijo.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="trazabilidad_lotes" value="No, usamos el método 'lo primero que entra es lo primero que sale' a ojo.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No, usamos el método "lo primero que entra es lo primero que sale" a ojo.</span>
-              </label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="turno_manana"> <span class="checkbox-custom"></span> Mañana</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="turno_tarde"> <span class="checkbox-custom"></span> Tarde</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="turno_noche"> <span class="checkbox-custom"></span> Noche</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="turno_otro_check" class="toggle-inputs" data-target="turno_otro_fields"> <span class="checkbox-custom"></span> Otros turnos</label>
+              <div id="turno_otro_fields" class="sub-fields disabled">
+                <input type="text" name="turno_otro_detalle" placeholder="Especifique turnos adicionales">
+              </div>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. ¿Los turnos deben mantenerse siempre como un conjunto fijo?</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="turnos_fijos" value="Sí, serán siempre los mismos."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, serán siempre los mismos.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="turnos_fijos" value="No, pueden cambiar con el tiempo."> <span class="radio-custom"></span> <span class="radio-label-text">No, pueden cambiar con el tiempo.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>3. Si pueden cambiar, ¿quién debería poder modificar o administrar los turnos?</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="turnos_admin" value="Dueño."> <span class="radio-custom"></span> <span class="radio-label-text">Dueño.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="turnos_admin" value="Administrador."> <span class="radio-custom"></span> <span class="radio-label-text">Administrador.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="turnos_admin" value="Supervisor."> <span class="radio-custom"></span> <span class="radio-label-text">Supervisor.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="turnos_admin" value="Otro" class="toggle-inputs" data-target="turnos_admin_other_fields"> <span class="radio-custom"></span> <span class="radio-label-text">Otro rol</span></label>
+              <div id="turnos_admin_other_fields" class="sub-fields disabled">
+                <input type="text" name="turnos_admin_detalle" placeholder="Especifique qué rol">
+              </div>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>4. Datos de los turnos (Horarios y nombres)</h3>
+            <div class="grid-2-col">
+              <div class="field-box">
+                <label>Nombre del turno:</label>
+                <input type="text" name="turno_config_nombre" placeholder="ej: Mañana / Refuerzo">
+              </div>
+              <div class="field-box">
+                <label>Hora Inicio a Fin:</label>
+                <input type="text" name="turno_config_horario" placeholder="ej: 06:00 a 14:00">
+              </div>
             </div>
 
             <div class="aclaracion-box mt-20">
@@ -644,8 +797,51 @@
               <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
             </div>
           </div>
+        </section>
 
-          <!-- Stock Crítico -->
+        <!-- SECCIÓN 5 -->
+        <section id="sec-5" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 5</span>
+            <h2>Materia Prima e Insumos Críticos</h2>
+            <p class="section-desc">Para calcular el costo real, alertas de stock y trazabilidad de compras.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Presentación y Costo de Insumos Críticos</h3>
+            <div class="table-responsive">
+              <table class="form-table">
+                <thead>
+                  <tr>
+                    <th>Insumo</th>
+                    <th>Presentación de compra</th>
+                    <th>Costo de la presentación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Harina</strong></td><td><input type="text" name="insumo_harina_pres" placeholder="ej: Bolsa 50kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_harina_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Levadura</strong> (Fresca / Seca)</td><td><input type="text" name="insumo_levadura_pres" placeholder="ej: Caja 10kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_levadura_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Grasa / Margarina / Aceite</strong></td><td><input type="text" name="insumo_grasa_pres" placeholder="ej: Caja 20kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_grasa_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Sésamo</strong></td><td><input type="text" name="insumo_sesamo_pres" placeholder="ej: Bolsa 25kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_sesamo_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Aditivos / Mejoradores</strong></td><td><input type="text" name="insumo_aditivos_pres" placeholder="ej: Bolsa 10kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_aditivos_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Azúcar</strong></td><td><input type="text" name="insumo_azucar_pres" placeholder="ej: Bolsa 50kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_azucar_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Sal</strong></td><td><input type="text" name="insumo_sal_pres" placeholder="ej: Bolsa 25kg"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_sal_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                  <tr><td><strong>Bolsas / Precintos</strong></td><td><input type="text" name="insumo_bolsas_pres" placeholder="ej: Millar"></td><td><div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="insumo_bolsas_costo" placeholder="0.00" step="0.01"></div></td></tr>
+                </tbody>
+                <tbody id="dynamic-insumo" data-count="0"></tbody>
+              </table>
+              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('insumo', 'Insumo Adicional', false, true)">+ Agregar otro insumo</button>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Trazabilidad de Ingreso (Lotes y Vencimientos)</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="trazabilidad_lotes" value="Sí, llevamos control estricto de qué lote usamos en cada amasijo."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, llevamos control estricto de qué lote usamos en cada amasijo.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="trazabilidad_lotes" value="No, usamos el método 'lo primero que entra es lo primero que sale' a ojo."> <span class="radio-custom"></span> <span class="radio-label-text">No, usamos el método "lo primero que entra es lo primero que sale" a ojo.</span></label>
+            </div>
+          </div>
+
           <div class="question-group">
             <h3>3. Alertas de Stock Mínimo</h3>
             <div class="single-field-row">
@@ -667,223 +863,33 @@
           </div>
         </section>
 
-        <!-- SECCIÓN 5 -->
-        <section id="sec-5" class="card-section">
-          <div class="section-header">
-            <span class="section-badge">Sección 5</span>
-            <h2>Mermas, Desperdicios y Reciclaje</h2>
-            <p class="section-desc">Para auditar las pérdidas de la jornada.</p>
-          </div>
-
-          <div class="question-group">
-            <h3>1. Merma de Masa (Cruda)</h3>
-            <p class="hint">¿Miden o pesan la masa de recorte/descarte antes de que vaya al horno?</p>
-
-            <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_masa" value="Sí, la pesamos en Kilos.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, la pesamos en Kilos.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_masa" value="No la medimos.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No la medimos.</span>
-              </label>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
-          </div>
-
-          <div class="question-group">
-            <h3>2. Merma de Producto Terminado (Cocido/Envasado)</h3>
-            <p class="hint">El pan quemado, deforme o roto en el empaque, ¿cómo lo contabilizan para descartarlo?</p>
-
-            <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_producto" value="Por unidad (ej: '15 panes').">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Por unidad (ej: "15 panes").</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_producto" value="Por bandejas (ej: 'media bandeja').">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Por bandejas (ej: "media bandeja").</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_producto" value="Por paquetes (ej: '3 paquetes').">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Por paquetes (ej: "3 paquetes").</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="merma_producto" value="Otros motivos" class="toggle-inputs" data-target="merma_otros_fields">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Otros motivos</span>
-              </label>
-              <div id="merma_otros_fields" class="sub-fields disabled">
-                <input type="text" name="merma_otros_detalle" placeholder="Especifique cuáles motivos">
-              </div>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
-          </div>
-
-          <div class="question-group">
-            <h3>3. Reciclaje y Recupero</h3>
-            <p class="hint">¿Se reutiliza el pan de descarte (ej. para pan rallado o venta secundaria a menor precio)?</p>
-
-            <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="reciclaje" value="Sí, recuperamos parte del valor" class="toggle-inputs" data-target="reciclaje_fields">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, recuperamos parte del valor</span>
-              </label>
-              <div id="reciclaje_fields" class="sub-fields disabled">
-                <div class="input-inline">
-                  <label>Monto de recupero estimado:</label>
-                  <div class="input-with-prefix">
-                    <span class="prefix">$</span>
-                    <input type="number" name="reciclaje_valor" placeholder="0.00" step="0.01">
-                  </div>
-                  <span class="text-sm">por kg/bolsa</span>
-                </div>
-              </div>
-
-              <label class="custom-radio-card">
-                <input type="radio" name="reciclaje" value="No, se tira a la basura (pérdida total).">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No, se tira a la basura (pérdida total).</span>
-              </label>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
-          </div>
-        </section>
-
         <!-- SECCIÓN 6 -->
         <section id="sec-6" class="card-section">
           <div class="section-header">
             <span class="section-badge">Sección 6</span>
-            <h2>Gastos Operativos y Modalidad de Ventas</h2>
-            <p class="section-desc">Para el registro comercial y la rentabilidad neta del día.</p>
+            <h2>Descuento de Materias Primas (FIFO / FEFO)</h2>
+            <p class="section-desc">Reglas para determinar qué lote físico de insumo se consume al producir.</p>
           </div>
 
           <div class="question-group">
-            <h3>1. Gastos diarios adicionales</h3>
-            <p class="hint">Además de la materia prima, ¿qué otros gastos cargan día a día para restar de la ganancia?</p>
-
+            <h3>1. Criterio para descontar lote de materia prima</h3>
             <div class="radio-options vertical">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="gasto_ninguno">
-                <span class="checkbox-custom"></span>
-                <span>Ninguno, solo materia prima.</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="gasto_combustible">
-                <span class="checkbox-custom"></span>
-                <span>Combustible / Fletes de entrega.</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="gasto_servicios">
-                <span class="checkbox-custom"></span>
-                <span>Servicios (Luz/Gas estimados por día).</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" name="gasto_empleados">
-                <span class="checkbox-custom"></span>
-                <span>Empleados / Jornales diarios.</span>
-              </label>
-            </div>
-
-            <div class="dynamic-container full-width mt-10" id="dynamic-gasto" data-count="1">
-              <div class="option-card full-width dynamic-item">
-                <label class="custom-checkbox-label">
-                  <input type="checkbox" name="gasto_otros_check_0" class="toggle-inputs" data-target="gasto_otros_fields_0">
-                  <span class="checkbox-custom"></span>
-                  <span>Otros gastos adicionales</span>
-                </label>
-                <div id="gasto_otros_fields_0" class="sub-fields disabled">
-                  <input type="text" name="gasto_otros_detalle_0" placeholder="Especifique cuáles (ej: mantenimiento)">
-                </div>
+              <label class="custom-radio-card"><input type="radio" name="criterio_fifo_fefo" value="FIFO: utilizar primero el lote que ingresó primero al depósito."> <span class="radio-custom"></span> <span class="radio-label-text">FIFO: utilizar primero el lote que ingresó primero al depósito.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="criterio_fifo_fefo" value="FEFO: utilizar primero el lote cuya fecha de vencimiento sea más próxima."> <span class="radio-custom"></span> <span class="radio-label-text">FEFO: utilizar primero el lote cuya fecha de vencimiento sea más próxima.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="criterio_fifo_fefo" value="Selección manual: el operario elige en la tablet qué lote está utilizando."> <span class="radio-custom"></span> <span class="radio-label-text">Selección manual: el operario elige en la tablet qué lote está utilizando.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="criterio_fifo_fefo" value="Otro criterio" class="toggle-inputs" data-target="criterio_fifo_other_fields"> <span class="radio-custom"></span> <span class="radio-label-text">Otro criterio</span></label>
+              <div id="criterio_fifo_other_fields" class="sub-fields disabled">
+                <input type="text" name="criterio_fifo_detalle" placeholder="Especifique criterio">
               </div>
-              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('gasto', 'Otros gastos adicionales', true)">+ Agregar otro gasto</button>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
             </div>
           </div>
 
-          <!-- Clientes Fijos y Mayoristas -->
           <div class="question-group">
-            <h3>2. Clientes Fijos y Mayoristas</h3>
-            <p class="hint">¿Manejan una lista de clientes fijos (ej. hamburgueserías, pancherías, supermercados) con precios especiales?</p>
-
+            <h3>2. Lote seleccionado insuficiente</h3>
             <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="clientes_mayoristas" value="Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="clientes_mayoristas" value="No, vendemos a consumidor final o todos pagan el mismo precio estándar.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No, vendemos a consumidor final o todos pagan el mismo precio estándar.</span>
-              </label>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
-          </div>
-
-          <!-- Cobranza y Cuentas Corrientes -->
-          <div class="question-group">
-            <h3>3. Cobranza y Cuentas Corrientes</h3>
-            <p class="hint">Al finalizar el día o registrar pedidos, ¿necesitan llevar el control de quién pagó y quién debe?</p>
-
-            <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="fiado_cc" value="Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="fiado_cc" value="No, todo se cobra al contado en el día.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No, todo se cobra al contado en el día.</span>
-              </label>
+              <label class="custom-radio-card"><input type="radio" name="lote_insuficiente" value="Continuar automáticamente con el siguiente lote correspondiente."> <span class="radio-custom"></span> <span class="radio-label-text">Continuar automáticamente con el siguiente lote correspondiente.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="lote_insuficiente" value="Solicitar al operario que seleccione el siguiente lote."> <span class="radio-custom"></span> <span class="radio-label-text">Solicitar al operario que seleccione el siguiente lote.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="lote_insuficiente" value="No permitir registrar la producción hasta resolverlo."> <span class="radio-custom"></span> <span class="radio-label-text">No permitir registrar la producción hasta resolverlo.</span></label>
             </div>
 
             <div class="aclaracion-box mt-20">
@@ -901,66 +907,43 @@
         <section id="sec-7" class="card-section">
           <div class="section-header">
             <span class="section-badge">Sección 7</span>
-            <h2>Infraestructura, Uso de la App y Mantenimiento</h2>
-            <p class="section-desc">Para configurar la conectividad, los roles de usuario y la maquinaria.</p>
+            <h2>Mermas, Desperdicios y Reciclaje</h2>
+            <p class="section-desc">Para auditar las pérdidas de la jornada.</p>
           </div>
 
-          <!-- Turnos -->
           <div class="question-group">
-            <h3>1. Turnos de producción</h3>
-            <div class="single-field-row">
-              <label for="turnos_cant">¿Cuántos turnos trabajan por día? (Mañana, Tarde, Noche)</label>
-              <div class="input-with-suffix compact">
-                <input type="number" id="turnos_cant" name="turnos_cantidad" placeholder="ej: 2" min="1">
-                <span class="suffix">turnos</span>
+            <h3>1. Merma de Masa (Cruda)</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="merma_masa" value="Sí, la pesamos en Kilos."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, la pesamos en Kilos.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="merma_masa" value="No la medimos."> <span class="radio-custom"></span> <span class="radio-label-text">No la medimos.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Merma de Producto Terminado (Cocido/Envasado)</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="merma_producto" value="Por unidad (ej: '15 panes')."> <span class="radio-custom"></span> <span class="radio-label-text">Por unidad (ej: "15 panes").</span></label>
+              <label class="custom-radio-card"><input type="radio" name="merma_producto" value="Por bandejas (ej: 'media bandeja')."> <span class="radio-custom"></span> <span class="radio-label-text">Por bandejas (ej: "media bandeja").</span></label>
+              <label class="custom-radio-card"><input type="radio" name="merma_producto" value="Por paquetes (ej: '3 paquetes')."> <span class="radio-custom"></span> <span class="radio-label-text">Por paquetes (ej: "3 paquetes").</span></label>
+              <label class="custom-radio-card"><input type="radio" name="merma_producto" value="Otros motivos" class="toggle-inputs" data-target="merma_otros_fields"> <span class="radio-custom"></span> <span class="radio-label-text">Otros motivos</span></label>
+              <div id="merma_otros_fields" class="sub-fields disabled">
+                <input type="text" name="merma_otros_detalle" placeholder="Especifique cuáles motivos">
               </div>
             </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
-            </div>
           </div>
 
-          <!-- Dispositivo y Conectividad -->
           <div class="question-group">
-            <h3>2. Dispositivo y Conectividad en Planta</h3>
-            <p class="hint">¿En qué tipo de dispositivo se usará la aplicación principalmente?</p>
-
+            <h3>3. Reciclaje y Recupero</h3>
             <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="dispositivo" value="Tablet (Android / iPad).">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Tablet (Android / iPad).</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="dispositivo" value="Celular del encargado.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Celular del encargado.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="dispositivo" value="Computadora de escritorio / Notebook.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Computadora de escritorio / Notebook.</span>
-              </label>
-            </div>
-
-            <p class="hint mt-20">¿Hay buena señal de Wi-Fi o datos móviles en la fabrica?</p>
-            <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="wifi_planta" value="Sí">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="wifi_planta" value="No">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No</span>
-              </label>
+              <label class="custom-radio-card"><input type="radio" name="reciclaje" value="Sí, recuperamos parte del valor" class="toggle-inputs" data-target="reciclaje_fields"> <span class="radio-custom"></span> <span class="radio-label-text">Sí, recuperamos parte del valor</span></label>
+              <div id="reciclaje_fields" class="sub-fields disabled">
+                <div class="input-inline">
+                  <label>Monto de recupero estimado:</label>
+                  <div class="input-with-prefix"><span class="prefix">$</span><input type="number" name="reciclaje_valor" placeholder="0.00" step="0.01"></div>
+                  <span class="text-sm">por kg/bolsa</span>
+                </div>
+              </div>
+              <label class="custom-radio-card"><input type="radio" name="reciclaje" value="No, se tira a la basura (pérdida total)."> <span class="radio-custom"></span> <span class="radio-label-text">No, se tira a la basura (pérdida total).</span></label>
             </div>
 
             <div class="aclaracion-box mt-20">
@@ -972,56 +955,29 @@
               <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
             </div>
           </div>
+        </section>
 
-          <!-- Roles y Privacidad -->
+        <!-- SECCIÓN 8 -->
+        <section id="sec-8" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 8</span>
+            <h2>Valorización Económica de Mermas</h2>
+            <p class="section-desc">Criterios para traducir las mermas físicas a pérdida monetaria.</p>
+          </div>
+
           <div class="question-group">
-            <h3>3. Roles y Privacidad</h3>
-            <p class="hint">Si el sistema lo va a usar un empleado (maestro panadero, encargado de turno), ¿qué información puede ver en la pantalla?</p>
-
+            <h3>1. ¿Calcular valor monetario de las mermas?</h3>
             <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="roles_privacidad" value="Puede ver todo (precios de costo, precios de venta, ganancias diarias).">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Puede ver todo (precios de costo, precios de venta, ganancias diarias).</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="roles_privacidad" value="Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="roles_privacidad" value="No la usará ningún operario, la aplicación la manejará exclusivamente el dueño.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No la usará ningún operario, la aplicación la manejará exclusivamente el dueño.</span>
-              </label>
-            </div>
-
-            <div class="aclaracion-box mt-20">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="toggle-aclaracion">
-                <span class="checkbox-custom"></span>
-                <span class="text-sm">💬 Agregar aclaración / comentario</span>
-              </label>
-              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+              <label class="custom-radio-card"><input type="radio" name="valorizar_mermas" value="Sí."> <span class="radio-custom"></span> <span class="radio-label-text">Sí.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="valorizar_mermas" value="No, solamente queremos registrar la cantidad de producto o materia prima desperdiciada."> <span class="radio-custom"></span> <span class="radio-label-text">No, solamente queremos registrar la cantidad física desperdiciada.</span></label>
             </div>
           </div>
 
-          <!-- Maquinaria y Mantenimiento -->
           <div class="question-group">
-            <h3>4. Maquinaria y Mantenimiento</h3>
-            <p class="hint">¿Les interesa llevar un registro en la aplicación de los arreglos o mantenimientos de las máquinas principales (Amasadora, Sobadora, Horno)?</p>
-
+            <h3>2. Criterio de costo para cálculo</h3>
             <div class="radio-options vertical">
-              <label class="custom-radio-card">
-                <input type="radio" name="maquinaria_mantenimiento" value="Sí, nos sirve para saber cuánto gastamos en mantenimiento.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">Sí, nos sirve para saber cuánto gastamos en mantenimiento.</span>
-              </label>
-              <label class="custom-radio-card">
-                <input type="radio" name="maquinaria_mantenimiento" value="No, lo manejamos por fuera o no nos interesa registrarlo por ahora.">
-                <span class="radio-custom"></span>
-                <span class="radio-label-text">No, lo manejamos por fuera o no nos interesa registrarlo por ahora.</span>
-              </label>
+              <label class="custom-radio-card"><input type="radio" name="criterio_costo_merma" value="Último costo registrado del insumo/producto."> <span class="radio-custom"></span> <span class="radio-label-text">Último costo registrado del insumo/producto.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="criterio_costo_merma" value="Costo promedio ponderado."> <span class="radio-custom"></span> <span class="radio-label-text">Costo promedio ponderado.</span></label>
             </div>
 
             <div class="aclaracion-box mt-20">
@@ -1033,7 +989,215 @@
               <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
             </div>
           </div>
+        </section>
 
+        <!-- SECCIÓN 9 -->
+        <section id="sec-9" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 9</span>
+            <h2>Gastos Operativos, Ventas y Cobranzas</h2>
+            <p class="section-desc">Para el registro comercial y la rentabilidad neta del día.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Gastos diarios adicionales</h3>
+            <div class="radio-options vertical">
+              <label class="custom-checkbox-label"><input type="checkbox" name="gasto_ninguno"> <span class="checkbox-custom"></span> Ninguno, solo materia prima.</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="gasto_combustible"> <span class="checkbox-custom"></span> Combustible / Fletes de entrega.</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="gasto_servicios"> <span class="checkbox-custom"></span> Servicios (Luz/Gas estimados por día).</label>
+              <label class="custom-checkbox-label"><input type="checkbox" name="gasto_empleados"> <span class="checkbox-custom"></span> Empleados / Jornales diarios.</label>
+            </div>
+
+            <div class="dynamic-container full-width mt-10" id="dynamic-gasto" data-count="1">
+              <div class="option-card full-width dynamic-item">
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" name="gasto_otros_check_0" class="toggle-inputs" data-target="gasto_otros_fields_0">
+                  <span class="checkbox-custom"></span>
+                  <span>Otros gastos adicionales</span>
+                </label>
+                <div id="gasto_otros_fields_0" class="sub-fields disabled">
+                  <input type="text" name="gasto_otros_detalle_0" placeholder="Especifique cuáles (ej: mantenimiento)">
+                </div>
+              </div>
+              <button type="button" class="btn-add-more mt-10" onclick="addDynamicItem('gasto', 'Otros gastos adicionales', true)">+ Agregar otro gasto</button>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Clientes Fijos y Mayoristas</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="clientes_mayoristas" value="Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, necesitamos tener la agenda de clientes mayoristas cargada en la app.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="clientes_mayoristas" value="No, vendemos a consumidor final o todos pagan el mismo precio estándar."> <span class="radio-custom"></span> <span class="radio-label-text">No, vendemos a consumidor final o todos pagan el mismo precio estándar.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>3. Cobranza y Cuentas Corrientes</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="fiado_cc" value="Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, damos fiado / cuenta corriente (a 7, 15 días, etc.) y hay que registrarlo.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="fiado_cc" value="No, todo se cobra al contado en el día."> <span class="radio-custom"></span> <span class="radio-label-text">No, todo se cobra al contado en el día.</span></label>
+            </div>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 10 -->
+        <section id="sec-10" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 10</span>
+            <h2>Pedidos, Estados y Reserva de Inventario</h2>
+            <p class="section-desc">Gestión comercial y compromiso de stock.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Función de los pedidos</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="funcion_pedidos" value="Solo sirven como registro/información."> <span class="radio-custom"></span> <span class="radio-label-text">Solo sirven como registro/información.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="funcion_pedidos" value="Sirven para reservar producción o stock."> <span class="radio-custom"></span> <span class="radio-label-text">Sirven para reservar producción o stock.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="funcion_pedidos" value="Sirven para ambas cosas."> <span class="radio-custom"></span> <span class="radio-label-text">Sirven para ambas cosas.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Momento de reserva de stock</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="reserva_momento" value="Nunca. El pedido es solamente informativo."> <span class="radio-custom"></span> <span class="radio-label-text">Nunca. El pedido es solamente informativo.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="reserva_momento" value="Al crear el pedido."> <span class="radio-custom"></span> <span class="radio-label-text">Al crear el pedido.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="reserva_momento" value="Al confirmar el pedido."> <span class="radio-custom"></span> <span class="radio-label-text">Al confirmar el pedido.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="reserva_momento" value="Manualmente por un encargado."> <span class="radio-custom"></span> <span class="radio-label-text">Manualmente por un encargado.</span></label>
+            </div>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 11 -->
+        <section id="sec-11" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 11</span>
+            <h2>Trazabilidad entre Ventas y Lotes de Producción</h2>
+            <p class="section-desc">Asociación entre lo producido y lo vendido.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Historial de ventas por lote de producción</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="historial_lote_ventas" value="No mostrar ingresos de ventas en el historial de lote."> <span class="radio-custom"></span> <span class="radio-label-text">No mostrar ingresos de ventas en el historial de lote.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="historial_lote_ventas" value="Mostrar parte de las ventas del día asignada proporcionalmente."> <span class="radio-custom"></span> <span class="radio-label-text">Mostrar parte de las ventas del día asignada proporcionalmente.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="historial_lote_ventas" value="El vendedor indica opcionalmente desde qué lote vende."> <span class="radio-custom"></span> <span class="radio-label-text">El vendedor indica opcionalmente desde qué lote vende.</span></label>
+            </div>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 12 -->
+        <section id="sec-12" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 12</span>
+            <h2>Uso de la App e Infraestructura en Planta</h2>
+            <p class="section-desc">Dispositivos y calidad de conectividad.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Dispositivo principal</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="dispositivo" value="Tablet (Android / iPad)."> <span class="radio-custom"></span> <span class="radio-label-text">Tablet (Android / iPad).</span></label>
+              <label class="custom-radio-card"><input type="radio" name="dispositivo" value="Celular del encargado."> <span class="radio-custom"></span> <span class="radio-label-text">Celular del encargado.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="dispositivo" value="Computadora de escritorio / Notebook."> <span class="radio-custom"></span> <span class="radio-label-text">Computadora de escritorio / Notebook.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Conectividad en Planta</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="wifi_planta" value="Sí, hay buena señal siempre."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, hay buena señal siempre.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="wifi_planta" value="No, la señal es mala (la app debe trabajar sin internet y sincronizar después)."> <span class="radio-custom"></span> <span class="radio-label-text">No, la señal es mala (la app debe trabajar sin internet y sincronizar después).</span></label>
+            </div>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 13 -->
+        <section id="sec-13" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 13</span>
+            <h2>Seguridad y Acceso mediante PIN</h2>
+            <p class="section-desc">Seguridad y perfiles de usuario en tablets.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Uso compartido y PIN</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="requiere_pin" value="No, acceso libre."> <span class="radio-custom"></span> <span class="radio-label-text">No, acceso libre.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="requiere_pin" value="Sí, solicitar PIN para funciones sensibles."> <span class="radio-custom"></span> <span class="radio-label-text">Sí, solicitar PIN para funciones sensibles.</span></label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Roles y Privacidad</h3>
+            <div class="radio-options vertical">
+              <label class="custom-radio-card"><input type="radio" name="roles_privacidad" value="Puede ver todo (precios de costo, precios de venta, ganancias diarias)."> <span class="radio-custom"></span> <span class="radio-label-text">Puede ver todo (precios de costo, precios de venta, ganancias diarias).</span></label>
+              <label class="custom-radio-card"><input type="radio" name="roles_privacidad" value="Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta."> <span class="radio-custom"></span> <span class="radio-label-text">Solo debe ver lo operativo (recetas, cantidad a producir, registro de mermas), la plata debe estar oculta.</span></label>
+              <label class="custom-radio-card"><input type="radio" name="roles_privacidad" value="No la usará ningún operario, la aplicación la manejará exclusivamente el dueño."> <span class="radio-custom"></span> <span class="radio-label-text">No la usará ningún operario, la aplicación la manejará exclusivamente el dueño.</span></label>
+            </div>
+
+            <div class="aclaracion-box mt-20">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="toggle-aclaracion">
+                <span class="checkbox-custom"></span>
+                <span class="text-sm">💬 Agregar aclaración / comentario</span>
+              </label>
+              <textarea class="aclaracion-text hidden" placeholder="Escribe tu aclaración aquí..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 14 -->
+        <section id="sec-14" class="card-section">
+          <div class="section-header">
+            <span class="section-badge">Sección 14</span>
+            <h2>Aclaraciones Finales sobre Reglas Operativas</h2>
+            <p class="section-desc">Reglas de negocio no escritas y observaciones generales.</p>
+          </div>
+
+          <div class="question-group">
+            <h3>1. Reglas implícitas o excepciones operativas</h3>
+            <div class="field-box">
+              <label>Observaciones o reglas especiales que el sistema deba considerar:</label>
+              <textarea name="observaciones_finales" class="aclaracion-text" style="display:block;" placeholder="Escribe cualquier regla, excepción o comentario final aquí..."></textarea>
+            </div>
+          </div>
         </section>
 
         <!-- Fixed Action Buttons Footer -->

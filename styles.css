@@ -172,17 +172,27 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--secondary-color);
 }
 
+.nav-group-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary-color);
+  margin-bottom: 0.4rem;
+  padding-left: 0.5rem;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.8rem;
   color: var(--text-muted);
   text-decoration: none;
   border-radius: var(--radius-md);
   transition: var(--transition);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .nav-item:hover, .nav-item.active {
@@ -267,6 +277,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .options-grid.checkboxes-grid {
@@ -279,6 +290,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem;
   background: #fafafa;
   transition: var(--transition);
+  align-self: start;
+  height: fit-content;
 }
 
 .option-card:hover {
@@ -288,6 +301,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .option-card.full-width {
   grid-column: 1 / -1;
+  width: 100%;
 }
 
 .custom-checkbox-label {
@@ -478,6 +492,7 @@ input[type="text"]:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+  align-items: start;
 }
 
 .field-box {
